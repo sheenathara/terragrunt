@@ -59,6 +59,14 @@ variable "ebs_volume_type" {
   default     = "gp3"
 }
 
+# Sensitive variable for testing pruning
+variable "db_password" {
+  description = "Database password (sensitive)"
+  type        = string
+  default     = "DefaultP@ssw0rd123"
+  sensitive   = true
+}
+
 locals {
   common_tags = {
     Owner       = var.owner
@@ -136,4 +144,11 @@ output "ebs_volume_id" {
 output "ebs_volume_size" {
   description = "Size of the additional EBS volume"
   value       = aws_ebs_volume.additional.size
+}
+
+# Sensitive output to test pruning
+output "db_password" {
+  description = "Database password (will show as sensitive value)"
+  value       = var.db_password
+  sensitive   = true
 }
