@@ -30,6 +30,14 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 
+# Sensitive variable for testing pruning
+variable "access_key" {
+  description = "Access Key (sensitive)"
+  type        = string
+  default     = "AKIAIOSFODNN7EXAMPLE"
+  sensitive   = true
+}
+
 locals {
   bucket_name = var.bucket_name != "" ? var.bucket_name : "${var.project}-${var.environment}-bucket"
   
@@ -76,4 +84,11 @@ output "bucket_arn" {
 output "bucket_tags" {
   description = "Tags applied to the S3 bucket"
   value       = aws_s3_bucket.main.tags
+}
+
+# Sensitive output to test pruning
+output "access_key" {
+  description = "Access Key (will show as sensitive value)"
+  value       = var.access_key
+  sensitive   = true
 }
