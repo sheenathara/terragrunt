@@ -12,4 +12,5 @@ inputs = {
   owner       = "dev-team"
   project     = "simple-tg"
   bucket_name = "raj-dev-bucket-unique-dev"
+  access_key  = "AKIADEVEXAMPLE123"
 }
