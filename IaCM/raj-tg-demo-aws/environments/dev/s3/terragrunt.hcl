@@ -8,5 +8,5 @@ terraform {
 
 inputs = {
   region      = "us-east-1"
-  bucket_name = "raj-tg-demo-dev-bucket"
+  bucket_name = "testim-dev-bucket"
 }
